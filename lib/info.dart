@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Info extends InheritedWidget {
-  final int? score;
-
-  const Info({
-    Key? key,
-    required this.score,
+class Info extends InheritedNotifier<ValueNotifier<int>> {
+  Info({
+    required ValueNotifier<int> notifier,
     required Widget child,
-  }) : super(key: key, child: child);
-
-  @override
-  bool updateShouldNotify(covariant Info oldWidget) {
-    return score != oldWidget.score;
-  }
+  }) : super(notifier: notifier, child: child);
 
   static Info? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<Info>();
