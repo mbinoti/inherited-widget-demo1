@@ -1,43 +1,42 @@
 import 'dart:math';
-
-import 'package:demo4/info.dart';
 import 'package:flutter/material.dart';
+import 'package:demo4/info.dart';
 
 class InheritedWidgetExample extends StatelessWidget {
   final Random _random = Random();
-  final ValueNotifier<int> _score = ValueNotifier<int>(10);
+  final ValueNotifier<int> _score = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Info(
-            notifier: _score,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(Icons.abc_rounded, size: 36, color: Colors.red),
-                ValueListenableBuilder(
-                  valueListenable: _score,
-                  builder: (context, value, child) {
-                    return Text(Info.of(context)!.notifier!.value.toString());
-                  },
-                ),
-
-                // Text(Info.of(context)!.score.toString()),
-              ],
+    return ValueListenableBuilder<int>(
+        valueListenable: _score,
+        builder: (context, value, _) {
+          return Info(
+            score: value,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.abc, size: 36, color: Colors.red),
+                      const SizedBox(width: 20),
+                      Builder(
+                        builder: (BuildContext context) {
+                          return Text(Info.of(context)!.score.toString());
+                        },
+                      ),
+                    ],
+                  ),
+                  OutlinedButton(
+                    onPressed: () => _score.value = _random.nextInt(100),
+                    child: const Text('Change'),
+                  )
+                ],
+              ),
             ),
-          ),
-          OutlinedButton(
-            onPressed: () {
-              _score.value = _random.nextInt(100);
-            },
-            child: const Text('Change'),
-          )
-        ],
-      ),
-    );
+          );
+        });
   }
 }
