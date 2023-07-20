@@ -1,16 +1,11 @@
-# demo4
+# demo inherited widgets
 
-A new Flutter project.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/6609513/254881001-4e4ebfb8-b73e-49d1-b2d9-05daef7f0d0c.jpg" width="350">
+</p>
 
-## Getting Started
+# Funcionalidades
 
-This project is a starting point for a Flutter application.
+* app para exibir numeros randomicos e usar a valuenotifier com inheritedwidgets.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  
